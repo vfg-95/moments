@@ -5,8 +5,7 @@ import Asset from "../../components/Asset";
 import { useProfileData } from "../../contexts/ProfileDataContext";
 import Profile from "./Profile";
 
-export const PopularProfiles = ({ mobile }) => {
-  
+const PopularProfiles = ({ mobile }) => {
   const { popularProfiles } = useProfileData();
 
   return (
@@ -35,4 +34,6 @@ export const PopularProfiles = ({ mobile }) => {
       )}
     </Container>
   );
-}
+};
+
+export default PopularProfiles;
