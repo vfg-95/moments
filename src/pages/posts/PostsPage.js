@@ -17,6 +17,7 @@ import NoResults from "../../assets/no-results.png";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles"
+import { useCurrentUser, useSetCurrentUser } from "../../contexts/CurrentUserContexts";
 
 
 function PostsPage({ message, filter = "" }) {
@@ -25,6 +26,8 @@ function PostsPage({ message, filter = "" }) {
     const { pathname } = useLocation();
 
     const [query, setQuery] = useState("");
+
+    const currentUser = useSetCurrentUser();
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -45,7 +48,7 @@ function PostsPage({ message, filter = "" }) {
         return () => {
           clearTimeout(timer);
         };
-      }, [filter, query, pathname]);
+      }, [filter, query, pathname, currentUser]);
     
       return (
         <Row className="h-100">
